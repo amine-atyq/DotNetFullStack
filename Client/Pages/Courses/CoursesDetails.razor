@@ -1,0 +1,121 @@
+@page "/courses/details"
+@page "/courses/details/{id}"
+@using CourseManagerApp.Client.Services
+@using CourseManagerApp.Shared.Models
+@namespace Client.Pages.Courses
+@inject IJSRuntime JSRuntime
+
+@if (string.IsNullOrEmpty(Id))
+{
+    <PageTitle>Add New Course</PageTitle>
+    <h1>Add New Course</h1>
+}
+else
+{
+    <PageTitle>Manage Course</PageTitle>
+    <h1>Manage Course</h1>
+}
+
+<div class="card col-md-8 mx-auto mt-4">
+    <div class="card-header">Course Details</div>
+    <div class="card-body">
+        <EditForm Model="@course" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="@HandleFailedRequest">
+            <div class="form-group">
+                <label for="Title" class="col-md-3">Title:</label>
+                <InputText id="Title" @bind-Value="course.Title" class="form-control" />
+                <ValidationMessage For="@(() => course.Title)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Description" class="col-md-3">Description:</label>
+                <InputText id="Description" @bind-Value="course.Description" class="form-control" />
+                <ValidationMessage For="@(() => course.Description)" />
+            </div>
+
+            <div class="form-group">
+                <label for="StudyHours" class="col-md-3">Study Hours:</label>
+                <InputNumber id="StudyHours" @bind-Value="course.StudyHours" class="form-control" />
+                <ValidationMessage For="@(() => course.StudyHours)" />
+            </div>
+
+            <div class="form-group">
+                <label for="InstructorId" class="col-md-3">Instructor:</label>
+                <InputSelect id="InstructorId" @bind-Value="course.InstructorID" class="form-control">
+                    <option value="">Select an Instructor</option>
+                    @foreach (var instructor in Instructors)
+                    {
+                        <option value="@instructor.InstructorID">@instructor.Name</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => course.InstructorID)" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning">Save</button>
+                <a @onclick="@GoToCourses" class="btn btn-primary">Back</a>
+            </div>
+        </EditForm>
+
+        <p style="color: red;">@Message</p>
+    </div>
+</div>
+
+@code
+{
+    protected string Message = string.Empty;
+    protected Course course = new Course();
+    private IEnumerable<Instructor> Instructors = new List<Instructor>();
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Inject]
+    public ICourseService CourseService { get; set; }
+
+    [Inject]
+    public IInstructorService InstructorService { get; set; }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        Instructors = await InstructorService.GetAll();
+        
+        if (!string.IsNullOrEmpty(Id))
+        {
+            var courseId = Convert.ToInt32(Id);
+            var apiCourse = await CourseService.GetCourse(courseId);
+            if (apiCourse != null)
+            {
+                course = apiCourse;
+            }
+        }
+    }
+
+    private async Task HandleValidRequest()
+    {
+        if (string.IsNullOrEmpty(Id))
+        {
+            await CourseService.AddCourse(course);
+            Message = "Course added successfully!";
+        }
+        else
+        {
+            await CourseService.UpdateCourse(course);
+            Message = "Course updated successfully!";
+        }
+
+        NavigationManager.NavigateTo("/courses");
+    }
+
+    private void HandleFailedRequest()
+    {
+        Message = "Form submission failed. Please check the form and try again.";
+    }
+
+    private void GoToCourses()
+    {
+        NavigationManager.NavigateTo("/courses");
+    }
+}

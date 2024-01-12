@@ -1,0 +1,301 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Server\\CourseManagerApp.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj",
+        "projectName": "CourseManagerApp.Client",
+        "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj",
+        "packagesPath": "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP Victus 16 Pouces\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj": {
+                "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.NET.ILLink.Analyzers": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.100-1.23211.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.Sdk.WebAssembly.Pack": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )",
+              "autoReferenced": true
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.23.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Server\\CourseManagerApp.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Server\\CourseManagerApp.Server.csproj",
+        "projectName": "CourseManagerApp.Server",
+        "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Server\\CourseManagerApp.Server.csproj",
+        "packagesPath": "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP Victus 16 Pouces\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj": {
+                "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj"
+              },
+              "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj": {
+                "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly.Server": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.23.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj",
+        "projectName": "CourseManagerApp.Shared",
+        "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj",
+        "packagesPath": "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP Victus 16 Pouces\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

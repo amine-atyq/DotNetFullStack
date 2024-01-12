@@ -1,0 +1,104 @@
+@page "/instructors/details"
+@page "/instructors/details/{id}"
+@using CourseManagerApp.Client.Services
+@using CourseManagerApp.Shared.Models
+@namespace Client.Pages.Instructors
+@inherits Microsoft.AspNetCore.Components.ComponentBase
+@inject IJSRuntime JSRuntime
+
+@if (string.IsNullOrEmpty(Id))
+{
+    <PageTitle>Add New Instructor</PageTitle>
+    <h1>Add New Instructor</h1>
+}
+else
+{
+    <PageTitle>Manage Instructor</PageTitle>
+    <h1>Manage Instructor</h1>
+}
+
+<div class="card col-md-8 mx-auto mt-4">
+    <div class="card-header">Instructor Details</div>
+    <div class="card-body">
+        <EditForm Model="@instructor" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="@HandleFailedRequest">
+            <div class="form-group">
+                <label for="Name" class="col-md-3">Name:</label>
+                <InputText id="Name" @bind-Value="instructor.Name" class="form-control" />
+                <ValidationMessage For="@(() => instructor.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Email" class="col-md-3">Email:</label>
+                <InputText id="Email" @bind-Value="instructor.Email" class="form-control" />
+                <ValidationMessage For="@(() => instructor.Email)" />
+            </div>
+
+            <div class="form-group">
+                <label for="OfficeNumber" class="col-md-3">Office Number:</label>
+                <InputText id="OfficeNumber" @bind-Value="instructor.OfficeNumber" class="form-control" />
+                <ValidationMessage For="@(() => instructor.OfficeNumber)" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning">Save</button>
+                <a @onclick="@GoToInstructors" class="btn btn-primary">Back</a>
+            </div>
+        </EditForm>
+
+        <p style="color: red;">@Message</p>
+    </div>
+</div>
+
+@code
+{
+    protected string Message = string.Empty;
+    protected Instructor instructor = new Instructor();
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Inject]
+    public IInstructorService InstructorService { get; set; }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(Id))
+        {
+            var instructorId = Convert.ToInt32(Id);
+            var apiInstructor = await InstructorService.GetInstructor(instructorId);
+            if (apiInstructor != null)
+            {
+                instructor = apiInstructor;
+            }
+        }
+    }
+
+    private async Task HandleValidRequest()
+    {
+        if (string.IsNullOrEmpty(Id))
+        {
+            await InstructorService.AddInstructor(instructor);
+            Message = "Instructor added successfully!";
+        }
+        else
+        {
+            await InstructorService.UpdateInstructor(instructor);
+            Message = "Instructor updated successfully!";
+        }
+
+        NavigationManager.NavigateTo("/instructors");
+    }
+
+    private void HandleFailedRequest()
+    {
+        Message = "Form submission failed. Please check the form and try again.";
+    }
+
+    private void GoToInstructors()
+    {
+        NavigationManager.NavigateTo("/instructors");
+    }
+}

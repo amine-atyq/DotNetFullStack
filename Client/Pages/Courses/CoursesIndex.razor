@@ -1,0 +1,97 @@
+@page "/courses"
+@using CourseManagerApp.Client.Services
+@using CourseManagerApp.Shared.Models
+@namespace Client.Pages.Courses
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Courses</PageTitle>
+<h3>Courses</h3>
+
+<a href="courses/Details" class="btn btn-success">Add new Course</a>
+<br />
+
+@if (Courses != null && Courses.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Study Hours</th>
+                <th>Instructor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Courses)
+            {
+                <tr>
+                    <td>@course.CourseID</td>
+                    <td>@course.Title</td>
+                    <td>@course.Description</td>
+                    <td>@course.StudyHours</td>
+                    <td>@(course.Instructor != null ? course.Instructor.Name : "N/A")</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditCourse(course.CourseID)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteCourse(course.CourseID, JSRuntime)">Delete</button>
+                        <button class="btn btn-info" @onclick="() => ShowStudents(course.CourseID)">Show Students</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No courses available.</p>
+}
+
+@code {
+    [Inject]
+    private ICourseService CourseService { get; set; }
+    
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    private IEnumerable<Course> Courses { get; set; } = new List<Course>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var apiCourses = await CourseService.GetAll();
+        if (apiCourses != null && apiCourses.Any())
+        {
+            Courses = apiCourses;
+        }
+    }
+
+    private void EditCourse(int courseId)
+    {
+        NavigationManager.NavigateTo($"courses/Details/{courseId}");
+    }
+
+    private async Task DeleteCourse(int courseId, IJSRuntime jsRuntime)
+    {
+        var confirmation = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this course?");
+
+        if (confirmation)
+        {
+            var result = await CourseService.DeleteCourse(courseId);
+
+            if (result)
+            {
+                // Refresh the course list after deletion
+                Courses = await CourseService.GetAll();
+            }
+            else
+            {
+                await jsRuntime.InvokeVoidAsync("alert", "Failed to delete the course. Please try again.");
+            }
+        }
+    }
+
+    private void ShowStudents(int courseId)
+    {
+        NavigationManager.NavigateTo($"courses/details/{courseId}");
+    }
+}

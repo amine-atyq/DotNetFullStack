@@ -1,0 +1,108 @@
+﻿@page "/students/details"
+@page "/students/details/{id}"
+@using CourseManagerApp.Shared.Models
+@using CourseManagerApp.Client.Services
+@namespace Client.Pages.Students
+
+@if (string.IsNullOrEmpty(Id))
+{
+    <PageTitle>Add New Student</PageTitle>
+    <h1>Add New Student</h1>
+}
+else
+{
+    <PageTitle>Manage Student</PageTitle>
+    <h1>Manage Student</h1>
+}
+
+<div class="card col-md-8 mx-auto mt-4">
+    <div class="card-header">Student Details</div>
+    <div class="card-body">
+        <EditForm Model="@student" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="@HandleFailedRequest">
+            <div class="form-group">
+                <label for="Name" class="col-md-3">Name:</label>
+                <InputText id="Name" @bind-Value="student.Name" class="form-control" />
+                <ValidationMessage For="@(() => student.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Email" class="col-md-3">Email:</label>
+                <InputText id="Email" @bind-Value="student.Email" class="form-control" />
+                <ValidationMessage For="@(() => student.Email)" />
+            </div>
+
+            <div class="form-group">
+                <label for="DateOfBirth" class="col-md-3">Date of Birth:</label>
+                <InputDate id="DateOfBirth" @bind-Value="student.DateOfBirth" class="form-control" />
+                <ValidationMessage For="@(() => student.DateOfBirth)" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning">Save</button>
+                <a @onclick="@GoToStudents" class="btn btn-primary">Back</a>
+            </div>
+        </EditForm>
+
+        <p style="color: red;">@Message</p>
+    </div>
+</div>
+
+@code
+{
+     protected string Message = string.Empty;
+            protected Student student = new Student();
+    
+            [Parameter]
+            public string Id { get; set; }
+    
+            [Inject]
+            public IStudentService studentService { get; set; }
+    
+            [Inject]
+            private NavigationManager navigationManager { get; set; }
+    
+            protected async override Task OnInitializedAsync()
+            {
+                if (string.IsNullOrEmpty(Id))
+                {
+                    // Handle the case for adding a new student
+                }
+                else
+                {
+                    var studentId = Convert.ToInt32(Id);
+                    var apiStudent = await studentService.GetStudent(studentId);
+                    if (apiStudent != null)
+                    {
+                        student = apiStudent;
+                    }
+                }
+            }
+    
+            private async Task HandleValidRequest()
+            {
+                // Handle the valid form submission, e.g., save the student data
+                if (string.IsNullOrEmpty(Id))
+                {
+                    await studentService.AddStudent(student);
+                    Message = "Student added successfully!";
+                }
+                else
+                {
+                    await studentService.UpdateStudent(student);
+                    Message = "Student updated successfully!";
+                }
+    
+                // Redirect to the students list page after successful submission
+                navigationManager.NavigateTo("/students");
+            }
+    
+            private void HandleFailedRequest()
+            {
+                Message = "Form submission failed. Please check the form and try again.";
+            }
+    
+            private void GoToStudents()
+            {
+                navigationManager.NavigateTo("/students");
+            }
+}

@@ -1,0 +1,88 @@
+﻿@page "/students"
+@using CourseManagerApp.Client.Services
+@using CourseManagerApp.Shared.Models
+@namespace Client.Pages.Students
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Students</PageTitle>
+<h3>Students</h3>
+
+<a href="students/Details" class="btn btn-success">Add new Student</a>
+<br />
+@if (Students != null && Students.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Students)
+            {
+                <tr>
+                    <td>@student.StudentID</td>
+                    <td>@student.Name</td>
+                    <td>@student.Email</td>
+                    <td>@student.DateOfBirth.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditStudent(student.StudentID)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteStudent(student.StudentID, JSRuntime)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No students available.</p>
+}
+
+@code
+{
+    [Inject]
+            public IStudentService StudentService { get; set; }
+    
+            [Inject]
+            public NavigationManager NavigationManager { get; set; }
+    
+            public IEnumerable<Student>? Students { get; set; } = new List<Student>();
+    
+            protected override async Task OnInitializedAsync()
+            {
+                var apiStudents = await StudentService.GetAll();
+                if (apiStudents != null && apiStudents.Any())
+                {
+                    Students = apiStudents;
+                }
+            }
+    
+            private void EditStudent(int studentId)
+            {
+                NavigationManager.NavigateTo($"students/Details/{studentId}");
+            }
+    
+            private async Task DeleteStudent(int studentId, IJSRuntime jsRuntime)
+            {
+                var confirmDelete = await jsRuntime.InvokeAsync<bool>("confirm", new object?[] { "Are you sure you want to delete this student?" });
+    
+                if (confirmDelete)
+                {
+                    var deleteResult = await StudentService.DeleteStudent(studentId);
+    
+                    if (deleteResult)
+                    {
+                        Students = await StudentService.GetAll();
+                    }
+                    else
+                    {
+                        await jsRuntime.InvokeVoidAsync("alert", "Failed to delete the student. Please try again.");
+                    }
+                }
+            }
+}

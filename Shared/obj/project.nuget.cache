@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "A08+j8pgkDi2oPYn95UxLGcjPo2LkyhIULPhF82dCiuljmbVTQSysVSUeqXoxnNoZ6vgR84PqFjZHLF9S8tV1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Shared\\CourseManagerApp.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

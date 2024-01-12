@@ -1,0 +1,71 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = CourseManagerApp.Client
+build_property.RootNamespace = CourseManagerApp.Client
+build_property.ProjectDir = C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Courses/CoursesDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VzRGV0YWlscy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Courses/CoursesIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VzSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Instructors/InstructorsDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5zdHJ1Y3RvcnNcSW5zdHJ1Y3RvcnNEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Instructors/InstructorsIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5zdHJ1Y3RvcnNcSW5zdHJ1Y3RvcnNJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Students/StudentsDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHNcU3R1ZGVudHNEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Students/StudentsIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHNcU3R1ZGVudHNJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-dzw3khz4dp
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-09d342gzzc
