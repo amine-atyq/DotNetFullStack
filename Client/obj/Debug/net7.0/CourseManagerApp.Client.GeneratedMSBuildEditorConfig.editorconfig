@@ -26,6 +26,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Courses/CoursesByInstructor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VzQnlJbnN0cnVjdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Courses/CoursesDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xDb3Vyc2VzRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Instructors/InstructorsIndex.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5zdHJ1Y3RvcnNcSW5zdHJ1Y3RvcnNJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/StudentCourse/AddStudentToCourse.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudENvdXJzZVxBZGRTdHVkZW50VG9Db3Vyc2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Students/StudentEnrolledCourses.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHNcU3R1ZGVudEVucm9sbGVkQ291cnNlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP Victus 16 Pouces/Desktop/Ginf3/dotnet/v2/CourseManagerApp/CourseManagerApp/Client/Pages/Students/StudentsDetails.razor]

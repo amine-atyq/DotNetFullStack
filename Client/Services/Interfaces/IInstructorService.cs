@@ -11,5 +11,7 @@ namespace CourseManagerApp.Client.Services
         Task<Instructor?> AddInstructor(Instructor instructor);
         Task<bool> UpdateInstructor(Instructor instructor);
         Task<bool> DeleteInstructor(int id);
+        Task<string> GetInstructorName(int? instructorId);
+
     }
 }

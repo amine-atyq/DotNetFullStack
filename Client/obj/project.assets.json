@@ -2246,11 +2246,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\client\\CourseManagerApp.Client.csproj",
+      "projectUniqueName": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj",
       "projectName": "CourseManagerApp.Client",
-      "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\client\\CourseManagerApp.Client.csproj",
+      "projectPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\CourseManagerApp.Client.csproj",
       "packagesPath": "C:\\Users\\HP Victus 16 Pouces\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\client\\obj\\",
+      "outputPath": "C:\\Users\\HP Victus 16 Pouces\\Desktop\\Ginf3\\dotnet\\v2\\CourseManagerApp\\CourseManagerApp\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP Victus 16 Pouces\\AppData\\Roaming\\NuGet\\NuGet.Config",

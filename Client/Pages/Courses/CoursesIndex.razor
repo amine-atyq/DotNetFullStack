@@ -1,5 +1,6 @@
 @page "/courses"
 @using CourseManagerApp.Client.Services
+@using CourseManagerApp.Shared.DTO
 @using CourseManagerApp.Shared.Models
 @namespace Client.Pages.Courses
 @inject IJSRuntime JSRuntime
@@ -31,11 +32,11 @@
                     <td>@course.Title</td>
                     <td>@course.Description</td>
                     <td>@course.StudyHours</td>
-                    <td>@(course.InstructorID)</td>
+                    <td>@course.InstructorName</td>
                     <td>
                         <button class="btn btn-primary" @onclick="() => EditCourse(course.CourseID)">Edit</button>
                         <button class="btn btn-danger" @onclick="() => DeleteCourse(course.CourseID, JSRuntime)">Delete</button>
-                        <button class="btn btn-info" @onclick="() => ShowStudents(course.CourseID)">Show Students</button>
+                        <button class="btn btn-info" @onclick="() => ShowInstructor(course.InstructorID)">Show Instructor</button>
                     </td>
                 </tr>
             }
@@ -52,13 +53,17 @@ else
     private ICourseService CourseService { get; set; }
     
     [Inject]
-    public NavigationManager NavigationManager { get; set; }
+    private IInstructorService InstructorService { get; set; }
 
-    private IEnumerable<Course> Courses { get; set; } = new List<Course>();
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+    
+    private IEnumerable<CourseDto> Courses { get; set; } = new List<CourseDto>();
+
 
     protected override async Task OnInitializedAsync()
     {
-        var apiCourses = await CourseService.GetAll();
+        var apiCourses = await CourseService.GetAllCoursesWithInstructorNames();
         if (apiCourses != null && apiCourses.Any())
         {
             Courses = apiCourses;
@@ -80,8 +85,7 @@ else
 
             if (result)
             {
-                // Refresh the course list after deletion
-                Courses = await CourseService.GetAll();
+                Courses = await CourseService.GetAllCoursesWithInstructorNames();
             }
             else
             {
@@ -90,8 +94,37 @@ else
         }
     }
 
-    private void ShowStudents(int courseId)
+    private void ShowInstructor(int? instructorId)
     {
-        NavigationManager.NavigateTo($"courses/details/{courseId}");
+        if (instructorId.HasValue)
+        {
+            NavigationManager.NavigateTo($"instructors/details/{instructorId.Value}");
+        }
+
     }
+ 
+
+    private async Task<string> GetInstructorName(int? instructorId)
+    {
+        if (instructorId.HasValue)
+        {
+            try
+            {
+                var instructor = await InstructorService.GetInstructor(instructorId.Value);
+                return instructor?.Name ?? "N/A";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "N/A";
+            }
+        }
+        else
+        {
+            return "N/A";
+        }
+    }
+
+
+   
 }

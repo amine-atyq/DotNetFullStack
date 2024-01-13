@@ -1,0 +1,69 @@
+﻿@page "/students/enrolledcourses/{studentId:int}"
+@using CourseManagerApp.Shared.Models
+@using CourseManagerApp.Client.Services
+
+<h3>Enrolled Courses</h3>
+
+@if (EnrolledCourses != null && EnrolledCourses.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Study Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var enrolledCourse in EnrolledCourses)
+            {
+                <tr>
+                    <td>@enrolledCourse.CourseID</td>
+                    <td>@enrolledCourse.Title</td>
+                    <td>@enrolledCourse.Description</td>
+                    <td>@enrolledCourse.StudyHours</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No enrolled courses for this student.</p>
+}
+
+@code {
+    [Parameter]
+    public int studentId { get; set; }
+
+    private List<Course> EnrolledCourses { get; set; } = new List<Course>();
+    private IEnumerable<Instructor> Instructors { get; set; } = new List<Instructor>();
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    [Inject]
+    private IStudentCourseService StudentCourseService { get; set; }
+    
+    [Inject]
+    private IInstructorService InstructorService { get; set; }
+
+    [Inject]
+    private ICourseService CourseService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        EnrolledCourses = await StudentCourseService.GetEnrolledCourses(studentId);
+        var apiInstructors = await InstructorService.GetAll();
+        if (apiInstructors != null && apiInstructors.Any())
+        {
+            Instructors = apiInstructors;
+        }
+    }
+    private string GetInstructorName(int instructorId)
+    {
+        var instructor = Instructors.FirstOrDefault(i => i.InstructorID == instructorId);
+        return instructor?.Name ?? "Unknown Instructor";
+    }
+}

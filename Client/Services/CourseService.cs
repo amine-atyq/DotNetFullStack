@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CourseManagerApp.Shared.DTO;
 using CourseManagerApp.Shared.Models;
 
 namespace CourseManagerApp.Client.Services
@@ -10,10 +11,12 @@ namespace CourseManagerApp.Client.Services
     public class CourseService : ICourseService
     {
         private readonly HttpClient _httpClient;
+        private readonly IInstructorService _instructorService;
 
-        public CourseService(HttpClient httpClient)
+        public CourseService(HttpClient httpClient,  IInstructorService instructorService)
         {
             _httpClient = httpClient;
+            _instructorService = instructorService;
         }
 
         public async Task<Course?> AddCourse(Course course)
@@ -95,5 +98,49 @@ namespace CourseManagerApp.Client.Services
                 throw ex;
             }
         }
+        public async Task<IEnumerable<CourseDto>> GetAllCoursesWithInstructorNames()
+        {
+            var courses = await GetAll();
+
+            var courseDtos = new List<CourseDto>();
+            foreach (var course in courses)
+            {
+                var instructorName = await _instructorService.GetInstructorName(course.InstructorID);
+                var courseDto = new CourseDto
+                {
+                    CourseID = course.CourseID,
+                    Title = course.Title,
+                    Description = course.Description,
+                    StudyHours = course.StudyHours,
+                    InstructorID = course.InstructorID,
+                    InstructorName = instructorName
+                    
+                };
+                courseDtos.Add(courseDto);
+            }
+
+            return courseDtos;
+        }
+        
+        public async Task<IEnumerable<Course>>? GetCoursesByInstructor(int instructorId)
+        {
+            try
+            {
+                var allCourses = await GetAll();
+
+                // Filter courses based on the provided instructorId
+                var instructorCourses = allCourses.Where(course => course.InstructorID == instructorId);
+
+                return instructorCourses;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        
+        
     }
 }

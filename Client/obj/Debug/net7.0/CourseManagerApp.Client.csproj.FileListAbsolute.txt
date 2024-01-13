@@ -618,6 +618,7 @@ C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseMana
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.AssemblyInfo.cs
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.csproj.CoreCompileInputs.cache
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.sourcelink.json
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\blazor.build.boot-extension.json
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\blazor.boot.json
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\staticwebassets.build.json
@@ -841,4 +842,3 @@ C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseMana
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\refint\CourseManagerApp.Client.dll
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.pdb
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\ref\CourseManagerApp.Client.dll
-C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.sourcelink.json

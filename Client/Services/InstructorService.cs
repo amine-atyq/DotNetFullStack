@@ -2,6 +2,8 @@ using CourseManagerApp.Shared.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CourseManagerApp.Client.Services
@@ -19,7 +21,6 @@ namespace CourseManagerApp.Client.Services
         {
             try
             {
-                // Replace with actual API endpoint or data access logic
                 return await httpClient.GetFromJsonAsync<IEnumerable<Instructor>>("api/instructors");
             }
             catch (HttpRequestException)
@@ -87,5 +88,30 @@ namespace CourseManagerApp.Client.Services
                 return false;
             }
         }
+        
+        public async Task<string> GetInstructorName(int? instructorId)
+        {
+            if (instructorId.HasValue)
+            {
+                try
+                {
+                    var instructor = await GetInstructor(instructorId.Value);
+                    return instructor?.Name ?? "N/A";
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return "N/A";
+                }
+            }
+            else
+            {
+                return "N/A";
+            }
+        }
+        
+        
+
+
     }
 }

@@ -35,6 +35,7 @@
                     <td>
                         <button class="btn btn-primary" @onclick="() => EditInstructor(instructor.InstructorID)">Edit</button>
                         <button class="btn btn-danger" @onclick="() => DeleteInstructor(instructor.InstructorID, JSRuntime)">Delete</button>
+                        <button class="btn btn-info" @onclick="() => ViewCourses(instructor.InstructorID)">View Courses</button>
                     </td>
                 </tr>
             }
@@ -54,8 +55,7 @@ else
     public NavigationManager NavigationManager { get; set; }
 
     private IEnumerable<Instructor> Instructors { get; set; } = new List<Instructor>();
- 
-    
+
     protected override async Task OnInitializedAsync()
     {
         var apiInstructors = await InstructorService.GetAll();
@@ -80,7 +80,7 @@ else
 
             if (result)
             {
-                Instructors =  await InstructorService.GetAll();
+                Instructors = await InstructorService.GetAll();
             }
             else
             {
@@ -89,4 +89,8 @@ else
         }
     }
 
+    private void ViewCourses(int instructorId)
+    {
+        NavigationManager.NavigateTo($"instructors/courses/{instructorId}");
+    }
 }

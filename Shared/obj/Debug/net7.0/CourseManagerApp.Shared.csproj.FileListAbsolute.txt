@@ -5,6 +5,7 @@ C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseMana
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.AssemblyInfoInputs.cache
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.AssemblyInfo.cs
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.csproj.CoreCompileInputs.cache
+C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.sourcelink.json
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.dll
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\refint\CourseManagerApp.Shared.dll
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Shared\obj\Debug\net7.0\CourseManagerApp.Shared.pdb

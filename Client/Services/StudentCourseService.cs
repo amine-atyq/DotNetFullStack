@@ -10,10 +10,12 @@ namespace CourseManagerApp.Client.Services
     public class StudentCourseService : IStudentCourseService
     {
         private readonly HttpClient _httpClient;
+        private readonly ICourseService _courseService;
 
-        public StudentCourseService(HttpClient httpClient)
+        public StudentCourseService(HttpClient httpClient, ICourseService courseService)
         {
             _httpClient = httpClient;
+            _courseService = courseService;
         }
 
         public async Task<StudentCourse?> AddStudentCourse(StudentCourse studentCourse)
@@ -21,7 +23,7 @@ namespace CourseManagerApp.Client.Services
             try
             {
                 var itemJson = new StringContent(JsonSerializer.Serialize(studentCourse), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("api/studentcourse", itemJson);
+                var response = await _httpClient.PostAsync("api/StudentCourse", itemJson);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -76,6 +78,37 @@ namespace CourseManagerApp.Client.Services
             {
                 Console.WriteLine(ex.Message);
                 throw ex;
+            }
+        }
+        
+        public async Task<List<Course>> GetEnrolledCourses(int studentId)
+        {
+            try
+            {
+                var studentCourses = await GetAll();
+                if (studentCourses != null && studentCourses.Any())
+                {
+                    var enrolledCourses = new List<Course>();
+
+                    foreach (var studentCourse in studentCourses.Where(sc => sc.StudentID == studentId))
+                    {
+                        var course = await _courseService.GetCourse(studentCourse.CourseID);
+                        if (course != null)
+                        {
+                            enrolledCourses.Add(course);
+                        }
+                    }
+
+                    return enrolledCourses;
+                }
+
+                return new List<Course>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                // Handle the exception as needed
+                return new List<Course>();
             }
         }
     }
