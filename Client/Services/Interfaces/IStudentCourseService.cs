@@ -12,5 +12,7 @@ namespace CourseManagerApp.Client.Services
         Task<bool> DeleteStudentCourse(int studentId, int courseId);
         Task<List<Course>> GetEnrolledCourses(int studentId);
         Task<List<Student>> GetEnrolledStudents(int courseId);
+        Task<bool> UpdateEnrollments(int courseId, List<StudentCourse> studentCourses);
+
     }
 }

@@ -12,9 +12,11 @@ namespace CourseManagerApp.Shared.Models
         public int StudentID { get; set; }
 
         public int CourseID { get; set; }
-        
+
+        [ForeignKey("StudentID")]
         public Student Student { get; set; }
-        
+
+        [ForeignKey("CourseID")]
         public Course Course { get; set; }
     }
 

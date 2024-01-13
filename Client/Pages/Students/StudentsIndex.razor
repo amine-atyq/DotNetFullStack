@@ -5,47 +5,55 @@
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Students</PageTitle>
-<h3>Students</h3>
+
+<div class="text-center mb-8"> 
+    <h3>Students</h3>
+</div>
 
 <a href="students/Details" class="btn btn-success">Add new Student</a>
 <br />
-@if (Students != null && Students.Any())
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Actions</th>
-            <th>Enrolled Courses</th> <!-- New column for the button -->
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var student in Students)
+
+<div class="card mt-4">
+    <div class="card-body">
+        @if (Students != null && Students.Any())
         {
-            <tr>
-                <td>@student.StudentID</td>
-                <td>@student.Name</td>
-                <td>@student.Email</td>
-                <td>@student.DateOfBirth.ToShortDateString()</td>
-                <td>
-                    <button class="btn btn-primary" @onclick="() => EditStudent(student.StudentID)">Edit</button>
-                    <button class="btn btn-danger" @onclick="() => DeleteStudent(student.StudentID, JSRuntime)">Delete</button>
-                </td>
-                <td>
-                    <button class="btn btn-info" @onclick="() => ViewEnrolledCourses(student.StudentID)">View Enrolled Courses</button>
-                </td>
-            </tr>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Actions</th>
+                        <th>Enrolled Courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Students)
+                    {
+                        <tr>
+                            <td>@student.StudentID</td>
+                            <td>@student.Name</td>
+                            <td>@student.Email</td>
+                            <td>@student.DateOfBirth.ToShortDateString()</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="() => EditStudent(student.StudentID)">Edit</button>
+                                <button class="btn btn-danger" @onclick="() => DeleteStudent(student.StudentID, JSRuntime)">Delete</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-info" @onclick="() => ViewEnrolledCourses(student.StudentID)">View Enrolled Courses</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No students available.</p>
-}
+        else
+        {
+            <p>No students available.</p>
+        }
+    </div>
+</div>
 
 @code
 {

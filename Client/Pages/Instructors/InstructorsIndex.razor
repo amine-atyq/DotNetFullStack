@@ -9,43 +9,51 @@
 
 <h3>Instructors</h3>
 
+<div class="text-center mb-8"> 
+    <h3>Instructors</h3>
+</div>
+
 <a href="instructors/details" class="btn btn-success">Add new Instructor</a>
 <br />
 
-@if (Instructors != null && Instructors.Any())
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Office Number</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var instructor in Instructors)
-            {
-                <tr>
-                    <td>@instructor.InstructorID</td>
-                    <td>@instructor.Name</td>
-                    <td>@instructor.Email</td>
-                    <td>@instructor.OfficeNumber</td>
-                    <td>
-                        <button class="btn btn-primary" @onclick="() => EditInstructor(instructor.InstructorID)">Edit</button>
-                        <button class="btn btn-danger" @onclick="() => DeleteInstructor(instructor.InstructorID, JSRuntime)">Delete</button>
-                        <button class="btn btn-info" @onclick="() => ViewCourses(instructor.InstructorID)">View Courses</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No instructors available.</p>
-}
+<div class="card mt-4">
+    <div class="card-body">
+        @if (Instructors != null && Instructors.Any())
+        {
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Office Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var instructor in Instructors)
+                    {
+                        <tr>
+                            <td>@instructor.InstructorID</td>
+                            <td>@instructor.Name</td>
+                            <td>@instructor.Email</td>
+                            <td>@instructor.OfficeNumber</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="() => EditInstructor(instructor.InstructorID)">Edit</button>
+                                <button class="btn btn-danger" @onclick="() => DeleteInstructor(instructor.InstructorID, JSRuntime)">Delete</button>
+                                <button class="btn btn-info" @onclick="() => ViewCourses(instructor.InstructorID)">View Courses</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No instructors available.</p>
+        }
+    </div>
+</div>
 
 @code {
     [Inject]

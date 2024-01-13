@@ -148,6 +148,53 @@ namespace CourseManagerApp.Client.Services
                 return new List<Student>();
             }
         }
+        
+        public async Task<bool> UpdateEnrollments(int courseId, List<StudentCourse> studentCourses)
+        {
+            try
+            {
+                // Filter studentCourses for the specified courseId
+                var validStudentCourses = studentCourses
+                    .Where(enrollment => enrollment.CourseID == courseId)
+                    .ToList();
+                Console.WriteLine(validStudentCourses);
+                // Get existing enrollments for the course
+                var existingEnrollments = await GetEnrolledStudents(courseId);
+
+                // Find enrollments to add
+                var enrollmentsToAdd = validStudentCourses
+                    .Where(newEnrollment => !existingEnrollments.Any(existingEnrollment =>
+                        existingEnrollment.StudentID == newEnrollment.StudentID))
+                    .ToList();
+
+                // Find enrollments to remove
+                var enrollmentsToRemove = existingEnrollments
+                    .Where(existingEnrollment => !validStudentCourses.Any(newEnrollment =>
+                        newEnrollment.StudentID == existingEnrollment.StudentID))
+                    .ToList();
+                 
+                
+                foreach (var enrollment in enrollmentsToAdd)
+                {
+                    Console.WriteLine($"Adding new enrollment: {enrollment.StudentID} to course {enrollment.CourseID}");
+                    await AddStudentCourse(enrollment);
+                }
+
+                // Remove old enrollments
+                foreach (var enrollment in enrollmentsToRemove)
+                {
+                    await DeleteStudentCourse(enrollment.StudentID, courseId);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                Console.WriteLine($"Error updating enrollments: {ex.Message}");
+                return false;
+            }
+        }
 
 
 

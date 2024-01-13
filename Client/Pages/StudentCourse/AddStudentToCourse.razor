@@ -1,64 +1,80 @@
 ﻿<!-- AddStudentToCourse.razor -->
-@page "/enrollments"
+@page "/AddStudentsToCourse"
 @using CourseManagerApp.Shared.Models
 @using CourseManagerApp.Client.Services
 @using System.Text.Json
 
 <PageTitle>Enroll Students to Course</PageTitle>
 
-<h3>Enroll Students to Course</h3>
+<div class="container mt-4">
+    <h3 class="text-center">Enroll Students to Course</h3>
+    
+        <div class="d-flex justify-content-center"> <!-- Center the row -->
+            <div class="col-6 form-group">
+                <select class="form-control" id="courseDropdown" @bind="selectedCourseId">
+                    <option value="0">Select a Course</option>
+                    @foreach (var course in courses)
+                    {
+                        <option value="@course.CourseID">@course.Title</option>
+                    }
+                </select>
+            </div>
+    
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" @onclick="ShowStudents">Show Students</button>
+            </div>
+        </div>
 
-<div class="form-group">
-    <label for="courseDropdown">Select Course:</label>
-    <select class="form-control" id="courseDropdown" @bind="selectedCourseId">
-        <option value="0">Select a Course</option>
-        @foreach (var course in courses)
+    @if (IsButtonClicked)
+    {
+
+        @if (students.Any())
         {
-            <option value="@course.CourseID">@course.Title</option>
+            <table class="table table-bordered table-striped mt-4">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Enroll</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in students)
+                    {
+                        <tr>
+                            <td>@student.StudentID</td>
+                            <td>@student.Name</td>
+                            <td>@student.Email</td>
+                            <td>@student.DateOfBirth.ToShortDateString()</td>
+                            <!-- Inside the table body -->
+                            <td>
+                                <input type="checkbox" checked="@IsEnrolled(student.StudentID)" @onchange="e => ToggleStudentEnrollment(e, student.StudentID)" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <button class="btn btn-success mt-3" @onclick="SaveChanges">Save Changes</button>
         }
-    </select>
+        else
+        {
+            <p class="mt-3">No students available.</p>
+        }
+    }
 </div>
-
-
-<button class="btn btn-primary" @onclick="EnrollStudents">Enroll Selected Students</button>
-
-@if (students.Any())
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Enroll</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var student in students)
-            {
-                <tr>
-                    <td>@student.StudentID</td>
-                    <td>@student.Name</td>
-                    <td>
-                        <input type="checkbox" @onchange="e => ToggleStudentSelection(e, student.StudentID)" />
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No students available.</p>
-}
-
 @code {
     private int selectedCourseId;
     private List<Course> courses = new List<Course>();
     private List<Student> students = new List<Student>();
-    private List<int> selectedStudentIds = new List<int>();
+    private List<StudentCourse> studentCourses = new List<StudentCourse>();
+    private bool IsButtonClicked { get; set; }
+
     [Inject]
     private ICourseService CourseService { get; set; }
-    
+
     [Inject]
     private IStudentService StudentService { get; set; }
 
@@ -70,77 +86,75 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        courses = (await CourseService.GetAll())?.ToList() ?? new List<Course>();
         students = (await StudentService.GetAll())?.ToList() ?? new List<Student>();
-        
-        
+        courses = (await CourseService.GetAll())?.ToList() ?? new List<Course>();
+        studentCourses = (await StudentCourseService.GetAll())?.ToList() ?? new List<StudentCourse>();
     }
 
-    private void ToggleStudentSelection(ChangeEventArgs e, int studentId)
+    private void ShowStudents()
     {
+        IsButtonClicked = true;
+        
+    }
+    
+    private bool IsEnrolled(int studentId)
+    {
+        return studentCourses.Any(sc => sc.StudentID == studentId && sc.CourseID == selectedCourseId);
+    }
+    
+    private void ToggleStudentEnrollment(ChangeEventArgs e, int studentId)
+    {
+        // Implement logic to enroll or unenroll the student based on the checkbox state
         if ((bool)e.Value)
         {
-            selectedStudentIds.Add(studentId);
+            // Enroll the student
+            // Add the logic to enroll the student in the selected course
+            var newEnrollment = new StudentCourse
+            {
+                StudentID = studentId,
+                CourseID = selectedCourseId
+            };
+            studentCourses.Add(newEnrollment);
         }
         else
         {
-            selectedStudentIds.Remove(studentId);
+            var enrollmentToRemove = studentCourses.FirstOrDefault(sc => sc.StudentID == studentId && sc.CourseID == selectedCourseId);
+            if (enrollmentToRemove != null)
+            {
+                studentCourses.Remove(enrollmentToRemove);
+            }
         }
     }
-
-    private async Task EnrollStudents()
+    
+    private async Task SaveChanges()
     {
         try
         {
-            // Print selectedStudentIds to console
-            Console.WriteLine("Selected Student IDs:");
-            foreach (var studentId in selectedStudentIds)
+            // Log the content of studentCourses before making the API call
+            Console.WriteLine("Student Courses to Update:");
+            foreach (var enrollment in studentCourses)
             {
-                Console.WriteLine(studentId);
+                Console.WriteLine($"StudentID: {enrollment.StudentID}, CourseID: {enrollment.CourseID}");
             }
 
-            Console.WriteLine($"Selected Course ID: {selectedCourseId}");
-
-            Course course = await CourseService.GetCourse(selectedCourseId);
-            if (selectedCourseId > 0 && selectedStudentIds.Any())
+            if (studentCourses != null && studentCourses.Any())
             {
-                foreach (var studentId in selectedStudentIds)
-                {
-                    Student student = await StudentService.GetStudent(studentId);
-                    var studentCourse = new StudentCourse
-                    {   
-                        StudentID = studentId,
-                        Course = course,
-                        CourseID = selectedCourseId,
-                        Student = student
-                        
-                    };
-                    Console.WriteLine($"StudentCourse object: {JsonSerializer.Serialize(studentCourse)}");
+                await StudentCourseService.UpdateEnrollments(selectedCourseId, studentCourses);
 
-                    var result = await StudentCourseService.AddStudentCourse(studentCourse);
+                IsButtonClicked = false;
 
-                    if (result != null)
-                    {
-                        // Enrollment successful, you may add additional logic or notifications here.
-                        Console.WriteLine($"Student {result.Student.Name} enrolled in course {result.Course.Title}");
-                    }
-                }
-
-                // Clear selected students after enrollment
-                selectedStudentIds.Clear();
+                await JSRuntime.InvokeVoidAsync("alert", "Changes saved successfully.");
             }
             else
             {
-                // Display an error message or notification if needed.
-                await JSRuntime.InvokeVoidAsync("alert", "Please select a course and at least one student to enroll.");
+                Console.WriteLine("No valid studentCourses data to update.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine($"Error saving changes: {ex.Message}");
             // Handle the exception as needed
         }
     }
-
 
 }
