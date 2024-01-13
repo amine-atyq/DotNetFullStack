@@ -22,6 +22,7 @@
                 <th>Study Hours</th>
                 <th>Instructor</th>
                 <th>Actions</th>
+                <th>Enrolled Students</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,9 @@
                         <button class="btn btn-primary" @onclick="() => EditCourse(course.CourseID)">Edit</button>
                         <button class="btn btn-danger" @onclick="() => DeleteCourse(course.CourseID, JSRuntime)">Delete</button>
                         <button class="btn btn-info" @onclick="() => ShowInstructor(course.InstructorID)">Show Instructor</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="() => ShowEnrolledStudents(course.CourseID)">View Enrolled Students</button>
                     </td>
                 </tr>
             }
@@ -98,7 +102,7 @@ else
     {
         if (instructorId.HasValue)
         {
-            NavigationManager.NavigateTo($"instructors/details/{instructorId.Value}");
+            NavigationManager.NavigateTo($"courses/Instructor/{instructorId.Value}");
         }
 
     }
@@ -123,6 +127,11 @@ else
         {
             return "N/A";
         }
+    }
+    
+    private void ShowEnrolledStudents(int courseId)
+    {
+        NavigationManager.NavigateTo($"courses/EnrolledStudents/{courseId}");
     }
 
 

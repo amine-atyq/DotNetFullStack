@@ -1,7 +1,7 @@
 {
   "entryAssembly": "CourseManagerApp.Client",
   "resources": {
-    "hash": "sha256-BXXizKAsA7l0VMxlkbOVeXwLsgKfsaM3dUH+1RM7Nlg=",
+    "hash": "sha256-GYumVOHmimrBha/YQQbwBUMRfEPRfUEefnMzB09OB0Q=",
     "runtime": {
       "dotnet.7.0.14.2su34cd65c.js": "sha256-YWGUknGRzP/fgO6YjvCJKPVQNZAPEd6ll+rHfQEIW+I=",
       "dotnet.timezones.blat": "sha256-t5xviiOQTfAsF0UDhmcyalKiaehUmf/sqJl97tmPM0M=",
@@ -204,12 +204,12 @@
       "mscorlib.dll": "sha256-YcsJInaT/kw3Vrm+SESegPxvT/Lr9RE6rE/KnxWIIc0=",
       "netstandard.dll": "sha256-TztlSRjADgiEABbiAMdWZpHrUVd8wnRtQRAvlwmRP/4=",
       "System.Private.CoreLib.dll": "sha256-BAhrZ8Zg3cJKQipxdzqQo+9jtPkOkRx1ou3oIhDohtk=",
-      "CourseManagerApp.Shared.dll": "sha256-mtQDa3xOEr3sJduoPjvtU7Xq6rBPEtAZs/6TisLgwjQ=",
-      "CourseManagerApp.Client.dll": "sha256-GXh/BEHT0/dexLq07muff8BIytVJg1q3ry+pjHe71Xs="
+      "CourseManagerApp.Shared.dll": "sha256-f5Mhb9I0VrR6WVLf4znKn2XkzlIffocyr+H0zxNgSdU=",
+      "CourseManagerApp.Client.dll": "sha256-GZnypknL/nD++Wo/p4BFo5LoouCzrNPxnsoTeFIcDVA="
     },
     "pdb": {
-      "CourseManagerApp.Shared.pdb": "sha256-3IlapFRWaT6OIvdIwF/rPrNISwReXj01aLcAdKCzryU=",
-      "CourseManagerApp.Client.pdb": "sha256-z901DCw7CYjALt7t0+sWwxuRHjUko5PBS8wWEcNoRmw="
+      "CourseManagerApp.Shared.pdb": "sha256-APqYDHWkmkydVmo0bK1IYoqgs+5hwVXPOveg6k0dReY=",
+      "CourseManagerApp.Client.pdb": "sha256-OBtejxWegAONa5F1oh96R+g1I5kwxyIu6VotfywlK5w="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

@@ -1,0 +1,83 @@
+﻿@page "/courses/EnrolledStudents/{courseId:int}"
+@using CourseManagerApp.Shared.Models
+@using CourseManagerApp.Client.Services
+@namespace Client.Pages.Students
+
+
+<PageTitle>Enrolled Students</PageTitle>
+<h3>Students in the Enrolled Course</h3>
+
+@if (EnrolledStudentsList != null && EnrolledStudentsList.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in EnrolledStudentsList)
+            {
+                <tr>
+                    <td>@student.StudentID</td>
+                    <td>@student.Name</td>
+                    <td>@student.Email</td>
+                    <td>@student.DateOfBirth.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No students enrolled in this course. Check the logs for more information.</p>
+}
+
+@code {
+    [Parameter]
+    public int courseId { get; set; }
+
+    private List<Student> EnrolledStudentsList { get; set; } = new List<Student>();
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    [Inject]
+    private IStudentCourseService StudentCourseService { get; set; }
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (StudentCourseService == null)
+            {
+                Console.WriteLine("StudentCourseService is null.");
+                return;
+            }
+
+            Console.WriteLine(courseId);
+            EnrolledStudentsList = await StudentCourseService.GetEnrolledStudents(courseId);
+
+            // Check if EnrolledStudentsList is null after loading
+            if (EnrolledStudentsList == null)
+            {
+                Console.WriteLine("EnrolledStudentsList is null after loading.");
+            }
+            else
+            {
+                Console.WriteLine($"EnrolledStudentsList count: {EnrolledStudentsList.Count}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitializedAsync: {ex.Message}");
+        }
+    }
+
+
+}
+

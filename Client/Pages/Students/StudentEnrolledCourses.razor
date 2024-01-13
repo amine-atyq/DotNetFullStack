@@ -38,7 +38,6 @@ else
     public int studentId { get; set; }
 
     private List<Course> EnrolledCourses { get; set; } = new List<Course>();
-    private IEnumerable<Instructor> Instructors { get; set; } = new List<Instructor>();
 
     [Inject]
     private IJSRuntime JSRuntime { get; set; }
@@ -55,15 +54,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         EnrolledCourses = await StudentCourseService.GetEnrolledCourses(studentId);
-        var apiInstructors = await InstructorService.GetAll();
-        if (apiInstructors != null && apiInstructors.Any())
-        {
-            Instructors = apiInstructors;
-        }
+ 
     }
-    private string GetInstructorName(int instructorId)
-    {
-        var instructor = Instructors.FirstOrDefault(i => i.InstructorID == instructorId);
-        return instructor?.Name ?? "Unknown Instructor";
-    }
+    
 }

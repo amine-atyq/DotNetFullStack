@@ -11,11 +11,13 @@ namespace CourseManagerApp.Client.Services
     {
         private readonly HttpClient _httpClient;
         private readonly ICourseService _courseService;
+        private readonly IStudentService _studentService;
 
-        public StudentCourseService(HttpClient httpClient, ICourseService courseService)
+        public StudentCourseService(HttpClient httpClient, ICourseService courseService, IStudentService studentService)
         {
             _httpClient = httpClient;
             _courseService = courseService;
+            _studentService = studentService;
         }
 
         public async Task<StudentCourse?> AddStudentCourse(StudentCourse studentCourse)
@@ -111,5 +113,44 @@ namespace CourseManagerApp.Client.Services
                 return new List<Course>();
             }
         }
+        
+        public async Task<List<Student>> GetEnrolledStudents(int courseId)
+        {
+            try
+            {
+
+                var studentCourses = await GetAll();
+                if (studentCourses != null && studentCourses.Any())
+                {
+                    var enrolledStudents = new List<Student>();
+
+                    foreach (var studentCourse in studentCourses.Where(sc => sc.CourseID == courseId))
+                    {
+                        var student = await _studentService.GetStudent(studentCourse.StudentID);
+                        if (student != null)
+                        {
+                            enrolledStudents.Add(student);
+                        }
+                    }
+
+                    Console.WriteLine($"Fetched {enrolledStudents.Count} students for course ID: {courseId}");
+
+                    return enrolledStudents;
+                }
+
+                Console.WriteLine($"No student courses found for course ID: {courseId}");
+                return new List<Student>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching enrolled students: {ex.Message}");
+                // Log or handle the exception as needed
+                return new List<Student>();
+            }
+        }
+
+
+
+
     }
 }
