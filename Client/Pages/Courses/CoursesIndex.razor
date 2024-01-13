@@ -31,7 +31,7 @@
                     <td>@course.Title</td>
                     <td>@course.Description</td>
                     <td>@course.StudyHours</td>
-                    <td>@(course.Instructor != null ? course.Instructor.Name : "N/A")</td>
+                    <td>@(course.InstructorID)</td>
                     <td>
                         <button class="btn btn-primary" @onclick="() => EditCourse(course.CourseID)">Edit</button>
                         <button class="btn btn-danger" @onclick="() => DeleteCourse(course.CourseID, JSRuntime)">Delete</button>

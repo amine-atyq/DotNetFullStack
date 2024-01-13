@@ -1,7 +1,7 @@
 {
   "entryAssembly": "CourseManagerApp.Client",
   "resources": {
-    "hash": "sha256-kVaU5bPJw/GZOQoQ999fcifzmwzagh1eWXVvJb5stEU=",
+    "hash": "sha256-6om10jNlMq3gD3BPQwlH402LZKXTagOwm3sEnx+TDCg=",
     "runtime": {
       "dotnet.7.0.14.2su34cd65c.js": "sha256-YWGUknGRzP/fgO6YjvCJKPVQNZAPEd6ll+rHfQEIW+I=",
       "dotnet.timezones.blat": "sha256-t5xviiOQTfAsF0UDhmcyalKiaehUmf/sqJl97tmPM0M=",
@@ -205,11 +205,11 @@
       "netstandard.dll": "sha256-TztlSRjADgiEABbiAMdWZpHrUVd8wnRtQRAvlwmRP/4=",
       "System.Private.CoreLib.dll": "sha256-BAhrZ8Zg3cJKQipxdzqQo+9jtPkOkRx1ou3oIhDohtk=",
       "CourseManagerApp.Shared.dll": "sha256-BvM3Th8Vs5fTGl5NypAdY0oH+s730NPgn4xfxlv74PQ=",
-      "CourseManagerApp.Client.dll": "sha256-jhQ9E5XI2gxG5B5fMckdCfwGAcwUGLLhVJuh1xd5nB8="
+      "CourseManagerApp.Client.dll": "sha256-e3fdwq1qHNbC+cKaGfUW7UsP7D8NBTlKGS9qJBQdhmI="
     },
     "pdb": {
       "CourseManagerApp.Shared.pdb": "sha256-dhyMDd1ZI88wTFxp0o1b52xiJbIrLQfGp7h4IDT+nkg=",
-      "CourseManagerApp.Client.pdb": "sha256-ffFsRfpGx3g9aDGaUJz0Q4HTlbRfDws6rxGKK46DFXA="
+      "CourseManagerApp.Client.pdb": "sha256-BmN60qAqiWMQYrWKTWU0MI7xgX7+aJaCCl7Dk/f4XOE="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

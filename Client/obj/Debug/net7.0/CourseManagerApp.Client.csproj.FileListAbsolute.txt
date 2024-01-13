@@ -841,3 +841,4 @@ C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseMana
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\refint\CourseManagerApp.Client.dll
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.pdb
 C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\ref\CourseManagerApp.Client.dll
+C:\Users\HP Victus 16 Pouces\Desktop\Ginf3\dotnet\v2\CourseManagerApp\CourseManagerApp\Client\obj\Debug\net7.0\CourseManagerApp.Client.sourcelink.json
